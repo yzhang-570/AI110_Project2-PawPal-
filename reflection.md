@@ -1,6 +1,25 @@
 # PawPal+ Project Reflection
 
 ## 1. System Design
+The user is able to enter details about their pet and personal priorities, add and manage tasks, and generate schedule recommendations based on this information.
+
+Classes:
+1. Owner
+- Attributes: name, gender, age
+- Methods: setName, setGender, setAge
+
+2. Pet
+- Attributes: name, sex, age
+- Methods: setName, setSex, setAge
+
+3. Task
+- Attributes: Name, Date, Repeat (X times daily, 2x daily, 1x daily, weekly, biweekly, monthly, yearly), Duration, Type (Pet Care, Constraint), Priority Level, Time Preference (morning, noon, evening), Pet
+- Methods: setName, setDuration, setFrequency, setType, setPriority, setTimePreference
+
+4. Scheduler
+- Attributes: taskList
+- Methods: addTask, removeTask, editTask
+
 
 **a. Initial design**
 
