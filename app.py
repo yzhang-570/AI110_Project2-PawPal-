@@ -43,6 +43,21 @@ st.subheader("Quick Demo Inputs (UI only)")
 owner_name = st.text_input("Owner name", value="Jordan")
 pet_name = st.text_input("Pet name", value="Mochi")
 species = st.selectbox("Species", ["dog", "cat", "other"])
+# demo/testing - only allows 1 owner, 1 pet
+if st.button("Add pet") and "owner" not in st.session_state and "pet" not in st.session_state:
+    if owner_name and pet_name:
+        owner = Owner(owner_name)
+        pet = Pet(pet_name, species)
+        owner.addPet(pet)
+        st.session_state.owner = owner
+        st.session_state.pet = pet
+    elif not owner_name:
+        st.error("Owner name is empty")
+    elif not pet_name:
+        st.error("Pet name is empty")
+
+print(st.session_state.owner)
+print(st.session_state.pet)
 
 st.markdown("### Tasks")
 st.caption("Add a few tasks. In your final version, these should feed into your scheduler.")
@@ -59,8 +74,11 @@ with col3:
     priority = st.selectbox("Priority", ["low", "medium", "high"], index=2)
 
 if st.button("Add task"):
+    task = Task(task_title, duration, priority)
+    st.session_state.pet.addTask(task)
     st.session_state.tasks.append(
-        {"title": task_title, "duration_minutes": int(duration), "priority": priority}
+        task
+        # {"title": task_title, "duration_minutes": int(duration), "priority": priority}
     )
 
 if st.session_state.tasks:
@@ -68,6 +86,8 @@ if st.session_state.tasks:
     st.table(st.session_state.tasks)
 else:
     st.info("No tasks yet. Add one above.")
+
+print(st.session_state.tasks)
 
 st.divider()
 
