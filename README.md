@@ -22,6 +22,13 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Smarter scheduling
+Uses intelligient algorithms that:
+- Detect scheduling conflicts
+- Sorts tasks by duration
+- Filters tasks by completion status and associated pet
+- Automatically schedules recurring tasks
+
 ## Getting started
 
 ### Setup

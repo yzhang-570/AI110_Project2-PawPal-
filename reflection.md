@@ -25,15 +25,29 @@ Yes.
 
 ## 2. Scheduling Logic and Tradeoffs
 
+- Testing - feels like extra weight at first but very important for ensuring correctness after refactoring/changes, and for visibly seeing the impact of the changes in practical usage (parameters, return types).
+- Using pytest vs. main
+   - main - allows printing, for manually checking results for complex things such as sorted lists
+   - pytest - checking that modular parts behave as expected, helps isolate behavior and verify that requirements are met
+- Start small - create basic classes, functionality; and demo UI to connect to these functions
+- Classes - used to standardize memory and operations in a structured way, even without a database
+  - Relationships between classes must be represented using aggregations
+- AI - useful for streamlining adding documentation/comments and quickly getting up to speed with test cases for manual review then testing; can also be used for commit messages
+  - exploring different apporaches - ex. creating 2 filter methods, or a single one for 2 filters
+
 **a. Constraints and priorities**
 
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
+It considers task completion status, priority, and preferred time.
 - How did you decide which constraints mattered most?
+I decided that the order above - from most to least important - was what mattered most, because only tasks that are incomplete should be scheduled. High priority tasks should also be considered before taking preferred times into account.
 
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
+My scheduler only supports 2 frequencies: daily and weekly.
 - Why is that tradeoff reasonable for this scenario?
+This allows focus on generating weekly schedules rather than monthly or yearly ones to stay within the scale of this demo.
 
 ---
 
