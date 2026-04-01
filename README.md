@@ -23,15 +23,18 @@ Your final app should:
 - Include tests for the most important scheduling behaviors
 
 ## Features
-Features
-Priority-based scheduling
-Preferred time scheduling
-Weekly plan generation
-Conflict detection
-Daily recurrence
-Weekly recurrence
-Chronological sorting
-Filtering
+- Features
+- Priority-based scheduling
+- Preferred time scheduling
+- Weekly plan generation
+- Conflict detection
+- Daily recurrence
+- Weekly recurrence
+- Chronological sorting
+- Filtering
+
+## 📸 Demo
+<img width="1918" height="907" alt="image" src="https://github.com/user-attachments/assets/16edf5e9-e381-4cca-8d96-c049ac0fdb1c" />
 
 ## Smarter scheduling
 Uses intelligient algorithms that:
