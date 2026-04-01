@@ -25,16 +25,6 @@ Yes.
 
 ## 2. Scheduling Logic and Tradeoffs
 
-- Testing - feels like extra weight at first but very important for ensuring correctness after refactoring/changes, and for visibly seeing the impact of the changes in practical usage (parameters, return types).
-- Using pytest vs. main
-   - main - allows printing, for manually checking results for complex things such as sorted lists
-   - pytest - checking that modular parts behave as expected, helps isolate behavior and verify that requirements are met
-- Start small - create basic classes, functionality; and demo UI to connect to these functions
-- Classes - used to standardize memory and operations in a structured way, even without a database
-  - Relationships between classes must be represented using aggregations
-- AI - useful for streamlining adding documentation/comments and quickly getting up to speed with test cases for manual review then testing; can also be used for commit messages
-  - exploring different apporaches - ex. creating 2 filter methods, or a single one for 2 filters
-
 **a. Constraints and priorities**
 
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
@@ -56,26 +46,31 @@ This allows focus on generating weekly schedules rather than monthly or yearly o
 **a. How you used AI**
 
 - How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
+I found AI to be especially useful for generating test cases. It allowed me to quickly get up to speed with translating edge cases into proper tests and documenting methods with proper commenting.
 - What kinds of prompts or questions were most helpful?
+I really liked questions exploring different approaches, such as whether to include scheduling recurring tasks as logic within the Task or Scheduling class based on OOP principles. AI's recommendation was the put it in the Scheduling class to follow the Single Responsibility Principle (SRP).
 
 **b. Judgment and verification**
 
 - Describe one moment where you did not accept an AI suggestion as-is.
+When AI recommended passing Task objects to check conflicts, I didn't initally accept it, because I thought that the scheduled time was the only parameter needed and this would make the required inputs more explicit.
+
 - How did you evaluate or verify what the AI suggested?
+I later discovered that I also needed duration to calculate the full window of the potential scheduling time of a new task, so I accepted AI's suggestions.
 
 ---
 
-## 4. Testing and Verification
-
-**a. What you tested**
-
-- What behaviors did you test?
+## 4. Testing and Verifi
+I tested core scheduling behaviors: task sorting by priority and duration, filtering by pet and completion status, and conflict detection when tasks overlap in time. I also tested edge cases like tasks with no preferred time and duplicate task names.
 - Why were these tests important?
+Testing was important because it validated that the scheduling logic held up after refactoring. Without tests, it would be hard to know whether changes to class structure or method signatures broke existing behavior. They also made the expected inputs and return types explicit and visible in a practical way.
 
 **b. Confidence**
 
 - How confident are you that your scheduler works correctly?
+I am fairly confident in the core behaviors covered by tests. The pytest suite isolates each modular piece, so regressions are caught quickly. I am less confident about untested interactions between multiple pets, tasks, and full schedule generation as a whole.
 - What edge cases would you test next if you had more time?
+I would test scheduling tasks that span midnight, tasks with identical priority but different durations, and generating a full weekly plan with conflicts present to verify how the scheduler resolves or reports them.
 
 ---
 
@@ -84,11 +79,18 @@ This allows focus on generating weekly schedules rather than monthly or yearly o
 **a. What went well**
 
 - What part of this project are you most satisfied with?
+I am most satisfied with the testing setup. Starting with basic classes and a demo UI, then layering in pytest alongside manual checks in main, made it much easier to verify correctness incrementally. Being able to see the practical impact of changes through both printed output and assertion-based tests gave me real confidence in the implementation.
 
 **b. What you would improve**
 
 - If you had another iteration, what would you improve or redesign?
+I would redesign the filter logic to be more composable. Rather than having two separate filter methods or forcing both filters into one, I would use an approach that can chain multiple conditions flexibly. I would also improve schedule generation to handle conflicts more gracefully instead of simply skipping them.
 
 **c. Key takeaway**
 
 - What is one important thing you learned about designing systems or working with AI on this project?
+Testing feels like extra weight at first, but it is essential for ensuring correctness after refactoring and for making the practical impact of changes visible, including how parameters and return types are actually used. Using both pytest (for isolating modular behavior and verifying requirements) and main (for manually printing and reviewing complex outputs like sorted lists) together gave the best coverage. Starting small, like with basic classes and a demo UI, and growing from there kept complexity manageable. Classes standardized memory and operations in a structured way even without a database, and relationships between classes had to be represented through aggregations. AI was most useful for streamlining documentation, getting up to speed with test cases for manual review, writing commit messages, and exploring different design approaches, such as whether to use two separate filter methods or one combined method for two filters.
+you had another iteration, what would you improve or redesign?
+
+
+**c. Key takeaway**

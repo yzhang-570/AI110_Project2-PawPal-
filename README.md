@@ -22,6 +22,17 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Features
+Features
+Priority-based scheduling
+Preferred time scheduling
+Weekly plan generation
+Conflict detection
+Daily recurrence
+Weekly recurrence
+Chronological sorting
+Filtering
+
 ## Smarter scheduling
 Uses intelligient algorithms that:
 - Detect scheduling conflicts
