@@ -29,6 +29,17 @@ Uses intelligient algorithms that:
 - Filters tasks by completion status and associated pet
 - Automatically schedules recurring tasks
 
+## Testing PawPal+
+python -m pytest
+My tests cover:
+1. Setting tasks as completed
+2. Adding tasks
+3. Filtering (by completion status and pet)
+4. Setting frequency
+5. Chronological sorting
+6. Scheduling conflict detection
+7. Recurring task scheduling correctness
+
 ## Getting started
 
 ### Setup

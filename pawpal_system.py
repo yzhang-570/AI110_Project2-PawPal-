@@ -240,9 +240,9 @@ class Scheduler:
         if not self.has_conflict(next_day_tasks, new_occurrence):
             owner_pet.add_task(new_occurrence)
 
-    def sort_tasks_by_duration(self):
-        """Sort all tasks by duration in ascending order and update the order of tasks in the scheduler's current plan."""
-        self.schedule = sorted(self.owner.get_all_tasks(), key=lambda task: task.duration)
+    def sort_tasks_by_scheduled_time(self):
+        """Sort all tasks by scheduled time in ascending order."""
+        self.schedule = sorted(self.owner.get_all_tasks(), key=lambda task: task.scheduled_time)
         return self.schedule
 
     def filter_tasks(self, completed: bool | None = None, pet_name: str | None = None) -> list[Task]:
